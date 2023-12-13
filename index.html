@@ -1,49 +1,88 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
 	<title></title>
 	<link rel="stylesheet" href="">
 	<style>
-	html,
-	body{
-		margin:0;
-		padding:0;
-		background:url(img/02.jpg) no-repeat;
-	}
-	.img{
-		width: 300px; 
-		height: 500px; 
-		position:absolute; 
-		top: 70%; 
-		left: 50%; 
-		transform: translate(-50%, -50%);
-	}
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			background: url(img/02.jpg) no-repeat;
+		}
+
+		.img {
+			width: 300px;
+			height: auto;
+			position: absolute;
+			top: 70%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.text {
+			font-weight: bold;
+			/* 字体粗细 */
+			text-shadow: 2px 2px 4px #000000;
+			/* 文字阴影 */
+			border: 2px solid #7395AE;
+			/* 边框 */
+			border-radius: 10px;
+			/* 边框圆角 */
+			padding: 10px;
+			/* 内边距 */
+			background-color: #B1A296;
+			/* 背景颜色 */
+			display: inline-block;
+			/* 使div不占用整行 */
+			margin: 10px;
+			/* 外边距 */
+			transition: all 0.3s ease;
+			/* 过渡效果 */
+
+			font-size: large;
+			position: absolute;
+			top: 10%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: rgb(255, 166, 0);
+		}
 	</style>
 </head>
-<body>
-<canvas id="canvas" width="1920" height="1080"></canvas>
-<img src="img/test.jpg" class="img"></img>
-<!-- <audio id="myAudio" autoplay loop>
-	<source src="http://image.youthsweet.com/music/周杰伦/七里香.mp3" type="audio/mpeg">
-	Your browser does not support the audio element.
-</audio> -->
 
-<audio controls="controls" autoplay loop>
-	<source src="http://image.youthsweet.com/music/周杰伦/七里香.mp3" type="audio/mpeg">
-  <embed height="100" width="100" src="http://image.youthsweet.com/music/周杰伦/七里香.mp3" />
-  </audio>
-<script src="js/weatherDrop.js"></script>
-<script>
-	new Weather({
-		id:'canvas',
-		weatherType:'snow',
-		num:100
-	});
-	var audio = document.getElementById('myAudio');
-	audio.play();
-</script>
+<body>
+	<b>
+		<p class="text">小 璐 看 雪 了~</p>
+	</b>
+	<audio id="myAudio" autoplay loop>
+		<source src="http://image.youthsweet.com/music/周杰伦/七里香.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	<canvas id="canvas" width="1920" height="1080"></canvas>
+	<img src="img/xiaolu.jpg" class="img"></img>
+
+	<script src="js/weatherDrop.js"></script>
+	<script>
+		new Weather({
+			id: 'canvas',
+			weatherType: 'snow',
+			num: 100
+		});
+		// 在用户第一次交互时取消静音
+		function enableAutoplay() {
+			var audio = document.getElementById('myAudio');
+			audio.muted = false;
+			audio.play();
+		}
+
+		// 捕捉用户的首次交互
+		document.body.addEventListener('click', enableAutoplay, false);
+		document.body.addEventListener('touchstart', enableAutoplay, false);
+	</script>
 
 </body>
+
 </html>
